@@ -4,4 +4,5 @@
   :author "Bart Botta <00003b at gmail.com>"
   :depends-on (alexandria)
   :serial t
-  :components ((:file "glsl-packing")))
+  :components ((:file "glsl-packing")
+               (:file "base-types")))

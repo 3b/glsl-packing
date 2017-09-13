@@ -1,9 +1,10 @@
 (defpackage #:glsl-packing
   (:use :cl)
-  (:export #:pack-structs))
+  (:export #:pack-structs
+           #:*base-types*
+           #:expand-glsl-type
+           #:expand-glsl-types))
 (in-package #:glsl-packing)
-;;; this should probably be moved to a separate project at some point...
-
 
 ;;; given a simple sexp representation of a glsl struct, return
 ;;; alignment for struct and offsets for all members, using either
