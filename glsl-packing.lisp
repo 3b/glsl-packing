@@ -135,7 +135,9 @@
        (let* ((definition (or (get-type type :errorp nil)
                               (get-type (car type))))
               (dump (dump* (car definition) definition)))
-         (push (list type dump) *output*)
+         (unless (and (not *dump-base-types*)
+                      (getf dump :base-type))
+           (push (list type dump) *output*))
          (setf (gethash type *dumped-types*) dump)))
      (gethash type *dumped-types*))))
 
