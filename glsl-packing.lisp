@@ -516,7 +516,6 @@ data for used scalar/vec/mat types types."
         (*output* nil)
         (blocks nil))
     (loop for (name type) in types
-          do (format t "-===== ~s ~s~%" name (if (consp type) (car type) type))
           when (eq name :packing)
             do (setf *packing* type)
           when (eq name :major)
@@ -526,7 +525,6 @@ data for used scalar/vec/mat types types."
                       name (gethash name *known-types*) type)
           when (typep type 'type-description)
             do (setf (gethash name *known-types*) type)
-               (format t "added type ~s -> ~s~%" name type)
                (when (and (member (car type) '(:block :buffer-block))
                           (or (not roots)
                               (member name roots :test 'equal)))
