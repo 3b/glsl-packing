@@ -55,7 +55,28 @@
                            collect `(:mat (:float 32) ,c ,r)
                            collect (alexandria:format-symbol :keyword
                                                              "DMAT~aX~a" c r)
-                           collect `(:mat (:float 64) ,c ,r))))))
+                           collect `(:mat (:float 64) ,c ,r)))
+        ;; treating sampler types as uint64 for now...
+        ,@ (loop for s in '(:sampler-1d :sampler-2d :sampler-3d :sampler-cube
+                            :sampler-1d-shadow :sampler-2d-shadow
+                            :sampler-cube-shadow :sampler-cube-array
+                            :sampler-cube-array-shadow :sampler-2d-rect
+                            :sampler-2d-rect-shadow :sampler-1d-array
+                            :sampler-2d-array :sampler-1d-array-shadow
+                            :sampler-2d-array-shadow :sampler-buffer
+                            :sampler-2d-ms :sampler-2d-ms-array
+                            :isampler-1d :isampler-2d :isampler-3d
+                            :isampler-cube :isampler-cube-array
+                            :isampler-2d-rect :isampler-1d-array
+                            :isampler-2d-array :isampler-buffer
+                            :isampler-2d-ms :isampler-2d-ms-array
+                            :usampler-1d :usampler-2d :usampler-3d
+                            :usampler-cube :usampler-cube-array
+                            :usampler-2d-rect :usampler-1d-array
+                            :usampler-2d-array :usampler-buffer
+                            :usampler-2d-ms :usampler-2d-ms-array)
+                 collect s
+                 collect '(:int 64)))))
 
 (defun expand-glsl-type (type &key (default type))
   (etypecase type
