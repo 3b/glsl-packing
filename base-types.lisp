@@ -76,7 +76,7 @@
                             :usampler-2d-array :usampler-buffer
                             :usampler-2d-ms :usampler-2d-ms-array)
                  collect s
-                 collect '(:int 64)))))
+                 collect '(:uint 64)))))
 
 (defun expand-glsl-type (type &key (default type))
   (etypecase type
