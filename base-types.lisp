@@ -80,8 +80,6 @@
 
 (defun expand-glsl-type (type &key (default type))
   (etypecase type
-    (type-description
-     type)
     (cons
      (list* :array
             (expand-glsl-type (first type))
